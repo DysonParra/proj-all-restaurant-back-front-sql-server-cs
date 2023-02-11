@@ -1,0 +1,48 @@
+﻿@model Project.Models.Supplier
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Supplier</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="StrSupplierCity" class="control-label"></label>
+                <input asp-for="StrSupplierCity" class="form-control" />
+                <span asp-validation-for="StrSupplierCity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TxtSupplierName" class="control-label"></label>
+                <input asp-for="TxtSupplierName" class="form-control" />
+                <span asp-validation-for="TxtSupplierName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IntPhone" class="control-label"></label>
+                <input asp-for="IntPhone" class="form-control" />
+                <span asp-validation-for="IntPhone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IntChefId" class="control-label"></label>
+                <input asp-for="IntChefId" class="form-control" />
+                <span asp-validation-for="IntChefId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,36 @@
+﻿@model Project.Models.Meal
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Meal</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.StrName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.StrName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FltPrice)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FltPrice)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IntChefId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IntChefId)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.IntMealId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
