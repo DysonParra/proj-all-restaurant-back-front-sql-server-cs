@@ -1,5 +1,5 @@
 /*
- * @fileoverview    {Order} se encarga de realizar tareas específicas.
+ * @fileoverview    {Order}
  *
  * @version         2.0
  *

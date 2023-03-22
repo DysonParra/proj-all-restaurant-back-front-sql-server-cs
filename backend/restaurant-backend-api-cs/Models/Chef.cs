@@ -1,5 +1,5 @@
 /*
- * @fileoverview    {Chef} se encarga de realizar tareas específicas.
+ * @fileoverview    {Chef}
  *
  * @version         2.0
  *

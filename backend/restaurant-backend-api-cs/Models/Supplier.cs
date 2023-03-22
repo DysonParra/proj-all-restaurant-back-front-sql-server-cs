@@ -1,5 +1,5 @@
 /*
- * @fileoverview    {Supplier} se encarga de realizar tareas específicas.
+ * @fileoverview    {Supplier}
  *
  * @version         2.0
  *
