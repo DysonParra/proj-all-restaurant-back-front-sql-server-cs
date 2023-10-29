@@ -16,7 +16,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 
 /**
- * TODO: Definición de {@code Order}.
+ * TODO: Description of {@code Order}.
  *
  * @author Dyson Parra
  */
