@@ -22,35 +22,35 @@ using Microsoft.EntityFrameworkCore;
 using Project.Models;
 using Restaurant.Data;
 
-namespace Restaurant.Controllers
-{
-    public class ChefController : Controller
-    {
+namespace Restaurant.Controllers {
+
+    /**
+     * TODO: Description of {@code ChefController}.
+     *
+     * @author Dyson Parra
+     * @since .NET 8 (LTS), C# 12
+     */
+    public class ChefController : Controller {
         private readonly RestaurantContext _context;
 
-        public ChefController(RestaurantContext context)
-        {
+        public ChefController(RestaurantContext context) {
             _context = context;
         }
 
         // GET: Chef
-        public async Task<IActionResult> Index()
-        {
+        public async Task<IActionResult> Index() {
             return View(await _context.Chef.ToListAsync());
         }
 
         // GET: Chef/Details/5
-        public async Task<IActionResult> Details(long? id)
-        {
-            if (id == null || _context.Chef == null)
-            {
+        public async Task<IActionResult> Details(long? id) {
+            if (id == null || _context.Chef == null) {
                 return NotFound();
             }
 
             var chef = await _context.Chef
                 .FirstOrDefaultAsync(m => m.IntChefId == id);
-            if (chef == null)
-            {
+            if (chef == null) {
                 return NotFound();
             }
 
@@ -58,8 +58,7 @@ namespace Restaurant.Controllers
         }
 
         // GET: Chef/Create
-        public IActionResult Create()
-        {
+        public IActionResult Create() {
             return View();
         }
 
@@ -68,10 +67,8 @@ namespace Restaurant.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IntChefId,StrChefName,FltSalary")] Chef chef)
-        {
-            if (ModelState.IsValid)
-            {
+        public async Task<IActionResult> Create([Bind("IntChefId,StrChefName,FltSalary")] Chef chef) {
+            if (ModelState.IsValid) {
                 _context.Add(chef);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -80,16 +77,13 @@ namespace Restaurant.Controllers
         }
 
         // GET: Chef/Edit/5
-        public async Task<IActionResult> Edit(long? id)
-        {
-            if (id == null || _context.Chef == null)
-            {
+        public async Task<IActionResult> Edit(long? id) {
+            if (id == null || _context.Chef == null) {
                 return NotFound();
             }
 
             var chef = await _context.Chef.FindAsync(id);
-            if (chef == null)
-            {
+            if (chef == null) {
                 return NotFound();
             }
             return View(chef);
@@ -100,28 +94,21 @@ namespace Restaurant.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(long? id, [Bind("IntChefId,StrChefName,FltSalary")] Chef chef)
-        {
-            if (id != chef.IntChefId)
-            {
+        public async Task<IActionResult> Edit(long? id, [Bind("IntChefId,StrChefName,FltSalary")] Chef chef) {
+            if (id != chef.IntChefId) {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
+            if (ModelState.IsValid) {
+                try {
                     _context.Update(chef);
                     await _context.SaveChangesAsync();
                 }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ChefExists(chef.IntChefId))
-                    {
+                catch (DbUpdateConcurrencyException) {
+                    if (!ChefExists(chef.IntChefId)) {
                         return NotFound();
                     }
-                    else
-                    {
+                    else {
                         throw;
                     }
                 }
@@ -131,17 +118,14 @@ namespace Restaurant.Controllers
         }
 
         // GET: Chef/Delete/5
-        public async Task<IActionResult> Delete(long? id)
-        {
-            if (id == null || _context.Chef == null)
-            {
+        public async Task<IActionResult> Delete(long? id) {
+            if (id == null || _context.Chef == null) {
                 return NotFound();
             }
 
             var chef = await _context.Chef
                 .FirstOrDefaultAsync(m => m.IntChefId == id);
-            if (chef == null)
-            {
+            if (chef == null) {
                 return NotFound();
             }
 
@@ -151,15 +135,12 @@ namespace Restaurant.Controllers
         // POST: Chef/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(long? id)
-        {
-            if (_context.Chef == null)
-            {
+        public async Task<IActionResult> DeleteConfirmed(long? id) {
+            if (_context.Chef == null) {
                 return Problem("Entity set 'RestaurantContext.Chef'  is null.");
             }
             var chef = await _context.Chef.FindAsync(id);
-            if (chef != null)
-            {
+            if (chef != null) {
                 _context.Chef.Remove(chef);
             }
 
@@ -167,8 +148,7 @@ namespace Restaurant.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ChefExists(long? id)
-        {
+        private bool ChefExists(long? id) {
             return _context.Chef.Any(e => e.IntChefId == id);
         }
     }

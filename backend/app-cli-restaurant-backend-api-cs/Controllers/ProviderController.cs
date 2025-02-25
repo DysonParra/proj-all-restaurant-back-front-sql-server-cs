@@ -22,35 +22,35 @@ using Microsoft.EntityFrameworkCore;
 using Project.Models;
 using Restaurant.Data;
 
-namespace Restaurant.Controllers
-{
-    public class ProviderController : Controller
-    {
+namespace Restaurant.Controllers {
+
+    /**
+     * TODO: Description of {@code ProviderController}.
+     *
+     * @author Dyson Parra
+     * @since .NET 8 (LTS), C# 12
+     */
+    public class ProviderController : Controller {
         private readonly RestaurantContext _context;
 
-        public ProviderController(RestaurantContext context)
-        {
+        public ProviderController(RestaurantContext context) {
             _context = context;
         }
 
         // GET: Provider
-        public async Task<IActionResult> Index()
-        {
+        public async Task<IActionResult> Index() {
             return View(await _context.Provider.ToListAsync());
         }
 
         // GET: Provider/Details/5
-        public async Task<IActionResult> Details(long? id)
-        {
-            if (id == null || _context.Provider == null)
-            {
+        public async Task<IActionResult> Details(long? id) {
+            if (id == null || _context.Provider == null) {
                 return NotFound();
             }
 
             var provider = await _context.Provider
                 .FirstOrDefaultAsync(m => m.IntProviderId == id);
-            if (provider == null)
-            {
+            if (provider == null) {
                 return NotFound();
             }
 
@@ -58,8 +58,7 @@ namespace Restaurant.Controllers
         }
 
         // GET: Provider/Create
-        public IActionResult Create()
-        {
+        public IActionResult Create() {
             return View();
         }
 
@@ -68,10 +67,8 @@ namespace Restaurant.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IntProviderId,IntIngredientId,IntSupplierId")] Provider provider)
-        {
-            if (ModelState.IsValid)
-            {
+        public async Task<IActionResult> Create([Bind("IntProviderId,IntIngredientId,IntSupplierId")] Provider provider) {
+            if (ModelState.IsValid) {
                 _context.Add(provider);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -80,16 +77,13 @@ namespace Restaurant.Controllers
         }
 
         // GET: Provider/Edit/5
-        public async Task<IActionResult> Edit(long? id)
-        {
-            if (id == null || _context.Provider == null)
-            {
+        public async Task<IActionResult> Edit(long? id) {
+            if (id == null || _context.Provider == null) {
                 return NotFound();
             }
 
             var provider = await _context.Provider.FindAsync(id);
-            if (provider == null)
-            {
+            if (provider == null) {
                 return NotFound();
             }
             return View(provider);
@@ -100,28 +94,21 @@ namespace Restaurant.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(long? id, [Bind("IntProviderId,IntIngredientId,IntSupplierId")] Provider provider)
-        {
-            if (id != provider.IntProviderId)
-            {
+        public async Task<IActionResult> Edit(long? id, [Bind("IntProviderId,IntIngredientId,IntSupplierId")] Provider provider) {
+            if (id != provider.IntProviderId) {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
+            if (ModelState.IsValid) {
+                try {
                     _context.Update(provider);
                     await _context.SaveChangesAsync();
                 }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ProviderExists(provider.IntProviderId))
-                    {
+                catch (DbUpdateConcurrencyException) {
+                    if (!ProviderExists(provider.IntProviderId)) {
                         return NotFound();
                     }
-                    else
-                    {
+                    else {
                         throw;
                     }
                 }
@@ -131,17 +118,14 @@ namespace Restaurant.Controllers
         }
 
         // GET: Provider/Delete/5
-        public async Task<IActionResult> Delete(long? id)
-        {
-            if (id == null || _context.Provider == null)
-            {
+        public async Task<IActionResult> Delete(long? id) {
+            if (id == null || _context.Provider == null) {
                 return NotFound();
             }
 
             var provider = await _context.Provider
                 .FirstOrDefaultAsync(m => m.IntProviderId == id);
-            if (provider == null)
-            {
+            if (provider == null) {
                 return NotFound();
             }
 
@@ -151,15 +135,12 @@ namespace Restaurant.Controllers
         // POST: Provider/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(long? id)
-        {
-            if (_context.Provider == null)
-            {
+        public async Task<IActionResult> DeleteConfirmed(long? id) {
+            if (_context.Provider == null) {
                 return Problem("Entity set 'RestaurantContext.Provider'  is null.");
             }
             var provider = await _context.Provider.FindAsync(id);
-            if (provider != null)
-            {
+            if (provider != null) {
                 _context.Provider.Remove(provider);
             }
 
@@ -167,8 +148,7 @@ namespace Restaurant.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ProviderExists(long? id)
-        {
+        private bool ProviderExists(long? id) {
             return _context.Provider.Any(e => e.IntProviderId == id);
         }
     }
