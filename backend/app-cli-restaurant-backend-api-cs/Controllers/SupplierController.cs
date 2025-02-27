@@ -33,16 +33,26 @@ namespace Restaurant.Controllers {
     public class SupplierController : Controller {
         private readonly RestaurantContext _context;
 
+        /**
+         * TODO: Description of method {@code SupplierController}.
+         *
+         */
         public SupplierController(RestaurantContext context) {
             _context = context;
         }
 
-        // GET: Supplier
+        /**
+         * GET: Supplier
+         *
+         */
         public async Task<IActionResult> Index() {
             return View(await _context.Supplier.ToListAsync());
         }
 
-        // GET: Supplier/Details/5
+        /**
+         * GET: Supplier/Details/5
+         *
+         */
         public async Task<IActionResult> Details(long? id) {
             if (id == null || _context.Supplier == null) {
                 return NotFound();
@@ -57,14 +67,20 @@ namespace Restaurant.Controllers {
             return View(supplier);
         }
 
-        // GET: Supplier/Create
+        /**
+         * GET: Supplier/Create
+         *
+         */
         public IActionResult Create() {
             return View();
         }
 
-        // POST: Supplier/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /**
+         * POST: Supplier/Create
+         * To protect from overposting attacks, enable the specific properties you want to bind to.
+         * For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+         *
+         */
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("IntSupplierId,StrSupplierCity,TxtSupplierName,IntPhone,IntChefId")] Supplier supplier) {
@@ -76,7 +92,10 @@ namespace Restaurant.Controllers {
             return View(supplier);
         }
 
-        // GET: Supplier/Edit/5
+        /**
+         * GET: Supplier/Edit/5
+         *
+         */
         public async Task<IActionResult> Edit(long? id) {
             if (id == null || _context.Supplier == null) {
                 return NotFound();
@@ -89,9 +108,12 @@ namespace Restaurant.Controllers {
             return View(supplier);
         }
 
-        // POST: Supplier/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /**
+         * POST: Supplier/Edit/5
+         * To protect from overposting attacks, enable the specific properties you want to bind to.
+         * For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+         *
+         */
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(long? id, [Bind("IntSupplierId,StrSupplierCity,TxtSupplierName,IntPhone,IntChefId")] Supplier supplier) {
@@ -117,7 +139,10 @@ namespace Restaurant.Controllers {
             return View(supplier);
         }
 
-        // GET: Supplier/Delete/5
+        /**
+         * GET: Supplier/Delete/5
+         *
+         */
         public async Task<IActionResult> Delete(long? id) {
             if (id == null || _context.Supplier == null) {
                 return NotFound();
@@ -132,7 +157,10 @@ namespace Restaurant.Controllers {
             return View(supplier);
         }
 
-        // POST: Supplier/Delete/5
+        /**
+         * POST: Supplier/Delete/5
+         *
+         */
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(long? id) {
@@ -148,6 +176,10 @@ namespace Restaurant.Controllers {
             return RedirectToAction(nameof(Index));
         }
 
+        /**
+         * TODO: Description of method {@code SupplierExists}.
+         *
+         */
         private bool SupplierExists(long? id) {
             return _context.Supplier.Any(e => e.IntSupplierId == id);
         }

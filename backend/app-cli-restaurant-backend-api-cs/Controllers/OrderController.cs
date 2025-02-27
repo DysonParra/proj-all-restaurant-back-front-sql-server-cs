@@ -33,16 +33,26 @@ namespace Restaurant.Controllers {
     public class OrderController : Controller {
         private readonly RestaurantContext _context;
 
+        /**
+         * TODO: Description of method {@code OrderController}.
+         *
+         */
         public OrderController(RestaurantContext context) {
             _context = context;
         }
 
-        // GET: Order
+        /**
+         * GET: Order
+         *
+         */
         public async Task<IActionResult> Index() {
             return View(await _context.Order.ToListAsync());
         }
 
-        // GET: Order/Details/5
+        /**
+         * GET: Order/Details/5
+         *
+         */
         public async Task<IActionResult> Details(long? id) {
             if (id == null || _context.Order == null) {
                 return NotFound();
@@ -57,14 +67,20 @@ namespace Restaurant.Controllers {
             return View(order);
         }
 
-        // GET: Order/Create
+        /**
+         * GET: Order/Create
+         *
+         */
         public IActionResult Create() {
             return View();
         }
 
-        // POST: Order/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /**
+         * POST: Order/Create
+         * To protect from overposting attacks, enable the specific properties you want to bind to.
+         * For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+         *
+         */
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("IntOrderId,IntCustomerId,IntMealId")] Order order) {
@@ -76,7 +92,10 @@ namespace Restaurant.Controllers {
             return View(order);
         }
 
-        // GET: Order/Edit/5
+        /**
+         * GET: Order/Edit/5
+         *
+         */
         public async Task<IActionResult> Edit(long? id) {
             if (id == null || _context.Order == null) {
                 return NotFound();
@@ -89,9 +108,12 @@ namespace Restaurant.Controllers {
             return View(order);
         }
 
-        // POST: Order/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /**
+         * POST: Order/Edit/5
+         * To protect from overposting attacks, enable the specific properties you want to bind to.
+         * For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+         *
+         */
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(long? id, [Bind("IntOrderId,IntCustomerId,IntMealId")] Order order) {
@@ -117,7 +139,10 @@ namespace Restaurant.Controllers {
             return View(order);
         }
 
-        // GET: Order/Delete/5
+        /**
+         * GET: Order/Delete/5
+         *
+         */
         public async Task<IActionResult> Delete(long? id) {
             if (id == null || _context.Order == null) {
                 return NotFound();
@@ -132,7 +157,10 @@ namespace Restaurant.Controllers {
             return View(order);
         }
 
-        // POST: Order/Delete/5
+        /**
+         * POST: Order/Delete/5
+         *
+         */
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(long? id) {
@@ -148,6 +176,10 @@ namespace Restaurant.Controllers {
             return RedirectToAction(nameof(Index));
         }
 
+        /**
+         * TODO: Description of method {@code OrderExists}.
+         *
+         */
         private bool OrderExists(long? id) {
             return _context.Order.Any(e => e.IntOrderId == id);
         }

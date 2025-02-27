@@ -33,16 +33,26 @@ namespace Restaurant.Controllers {
     public class ChefController : Controller {
         private readonly RestaurantContext _context;
 
+        /**
+         * TODO: Description of method {@code ChefController}.
+         *
+         */
         public ChefController(RestaurantContext context) {
             _context = context;
         }
 
-        // GET: Chef
+        /**
+         * GET: Chef
+         *
+         */
         public async Task<IActionResult> Index() {
             return View(await _context.Chef.ToListAsync());
         }
 
-        // GET: Chef/Details/5
+        /**
+         * GET: Chef/Details/5
+         *
+         */
         public async Task<IActionResult> Details(long? id) {
             if (id == null || _context.Chef == null) {
                 return NotFound();
@@ -57,14 +67,20 @@ namespace Restaurant.Controllers {
             return View(chef);
         }
 
-        // GET: Chef/Create
+        /**
+         * GET: Chef/Create
+         *
+         */
         public IActionResult Create() {
             return View();
         }
 
-        // POST: Chef/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /**
+         * POST: Chef/Create
+         * To protect from overposting attacks, enable the specific properties you want to bind to.
+         * For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+         *
+         */
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("IntChefId,StrChefName,FltSalary")] Chef chef) {
@@ -76,7 +92,10 @@ namespace Restaurant.Controllers {
             return View(chef);
         }
 
-        // GET: Chef/Edit/5
+        /**
+         * GET: Chef/Edit/5
+         *
+         */
         public async Task<IActionResult> Edit(long? id) {
             if (id == null || _context.Chef == null) {
                 return NotFound();
@@ -89,9 +108,12 @@ namespace Restaurant.Controllers {
             return View(chef);
         }
 
-        // POST: Chef/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /**
+         * POST: Chef/Edit/5
+         * To protect from overposting attacks, enable the specific properties you want to bind to.
+         * For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+         *
+         */
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(long? id, [Bind("IntChefId,StrChefName,FltSalary")] Chef chef) {
@@ -117,7 +139,10 @@ namespace Restaurant.Controllers {
             return View(chef);
         }
 
-        // GET: Chef/Delete/5
+        /**
+         * GET: Chef/Delete/5
+         *
+         */
         public async Task<IActionResult> Delete(long? id) {
             if (id == null || _context.Chef == null) {
                 return NotFound();
@@ -132,7 +157,10 @@ namespace Restaurant.Controllers {
             return View(chef);
         }
 
-        // POST: Chef/Delete/5
+        /**
+         * POST: Chef/Delete/5
+         *
+         */
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(long? id) {
@@ -148,6 +176,10 @@ namespace Restaurant.Controllers {
             return RedirectToAction(nameof(Index));
         }
 
+        /**
+         * TODO: Description of method {@code ChefExists}.
+         *
+         */
         private bool ChefExists(long? id) {
             return _context.Chef.Any(e => e.IntChefId == id);
         }
