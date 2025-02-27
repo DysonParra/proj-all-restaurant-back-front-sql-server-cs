@@ -28,7 +28,12 @@ namespace Restaurant.Data {
      * @since .NET 8 (LTS), C# 12
      */
     public class RestaurantContext : DbContext {
-        public RestaurantContext (DbContextOptions<RestaurantContext> options)
+
+        /**
+         * TODO: Description of method {@code RestaurantContext}.
+         *
+         */
+        public RestaurantContext(DbContextOptions<RestaurantContext> options)
             : base(options) {
         }
 
