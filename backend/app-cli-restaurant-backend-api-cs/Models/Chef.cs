@@ -1,5 +1,5 @@
 /*
- * @fileoverview    {Chef}
+ * @overview        {Chef}
  *
  * @version         2.0
  *

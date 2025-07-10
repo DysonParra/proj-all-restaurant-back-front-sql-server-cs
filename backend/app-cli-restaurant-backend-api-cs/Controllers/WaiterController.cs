@@ -1,5 +1,5 @@
 ﻿/*
- * @fileoverview    {WaiterController}
+ * @overview        {WaiterController}
  *
  * @version         2.0
  *

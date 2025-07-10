@@ -1,5 +1,5 @@
 ﻿/*
- * @fileoverview    {CustomerController}
+ * @overview        {CustomerController}
  *
  * @version         2.0
  *

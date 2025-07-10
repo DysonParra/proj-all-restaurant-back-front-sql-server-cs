@@ -1,5 +1,5 @@
 ﻿/*
- * @fileoverview    {SupplierController}
+ * @overview        {SupplierController}
  *
  * @version         2.0
  *

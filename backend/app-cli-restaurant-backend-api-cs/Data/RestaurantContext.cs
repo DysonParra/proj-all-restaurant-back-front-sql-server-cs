@@ -1,5 +1,5 @@
 ﻿/*
- * @fileoverview    {RestaurantContext}
+ * @overview        {RestaurantContext}
  *
  * @version         2.0
  *
